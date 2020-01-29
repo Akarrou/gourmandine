@@ -15,36 +15,85 @@
 <body>
 <header th:replace="header :: header"></header>
 <div class="container">
-<div class="d-flex flex-wrap">
-        <div class="card">
-            <img class="card-img-top" src="photo-1575411619998-a654a55391da.jpeg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="photo-1512010303412-55c25d71ba7c.jpeg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="photo-1571520636527-3e6e3d0615b7.jpeg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <h1>Composer Votre Tarte</h1>
+    <div class="d-flex flex-wrap">
+        <div class="col-2 m-5" th:each="halfFinshedFruits : ${halfFinshedFruit}">
+            <div class="collage-image fl-wrap">
+                <div class="collage-image-title" data-scrollax="properties: { translateY: '150px' }"
+                     style="transform: translateZ(0px) translateY(11.0632px);"  th:text="${halfFinshedFruits.name}" >Ananas.
+                </div>
+                <img th:src="${halfFinshedFruits.img}" class="respimg image-conviction" alt="" th:id="${halfFinshedFruits.getId()}" onclick="changeValue('select1',this.id)">
             </div>
         </div>
 
     </div>
 </div>
+<form th:action="@{/finalProductSaveClient}" method="post" th:object="${newfinalProduct}">
+    <div class="row">
+        <input name="idFp" th:field="*{idFp}" class="form-control" hidden>
+        <div class="col-2">
+            <label>refPf</label>
+            <input name="refPf" th:field="*{refPf}" class="form-control">
+        </div>
+        <div class="col-2">
+            <label>name</label>
+            <input name="name" th:field="*{name}" class="form-control">
+        </div>
+        <div class="col-2">
+            <label>prices</label>
+            <input name="prices" th:field="*{prices}" class="form-control">
+        </div>
+        <div class="col-2">
+            <label>description</label>
+            <textarea name="description" th:field="*{description}" class="form-control"></textarea>
+        </div>
+        <div class="col-2">
+            <label class="smallfont">Creme</label>
+            <select class="custom-select form-control smallfont" name="halfFinsheds" id="select1" >
+                <option></option>
+                <option class="smallfont" th:each="halfFinsheds : ${halfFinshed}"
+                        th:value="${halfFinsheds.getId()}"
+                        th:text="${halfFinsheds.name} + ' '  +${halfFinsheds.prices}">
+                </option>
+            </select>
+        </div>
+        <div class="col-2">
+            <label class="smallfont">Creme</label>
+            <select class="custom-select form-control smallfont" name="halfFinsheds">
+                <option></option>
+                <option class="smallfont" th:each="halfFinsheds : ${halfFinshed}"
+                        th:value="${halfFinsheds.getId()}"
+                        th:text="${halfFinsheds.name} + ' '  +${halfFinsheds.prices}">
+                </option>
+            </select>
+        </div>
+        <div class="col-2">
+            <label class="smallfont">Creme</label>
+            <select class="custom-select form-control smallfont" name="halfFinsheds">
+                <option></option>
+                <option class="smallfont" th:each="halfFinsheds : ${halfFinshed}"
+                        th:value="${halfFinsheds.getId()}"
+                        th:text="${halfFinsheds.name} + ' '  +${halfFinsheds.prices}">
+                </option>
+            </select>
+        </div>
+        <div class="d-flex align-self-end">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enregistrer</button>
+        </div>
+    </div>
+</form>
+</div>
+<script>
+function run(id) {
+document.getElementById("select1").value  = document.getElementById(id).innerText;
+}
+function changeValue( id_btn, texte){
+    var oBtn = document.getElementById(id_btn);
+    if( oBtn){
+        oBtn.value = texte;
+    }
+}
+</script>
 <footer th:replace="footer :: footer"></footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

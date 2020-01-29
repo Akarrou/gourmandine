@@ -1,19 +1,20 @@
 body,p {
     margin: 0;
+    background-color: whitesmoke;
 }
 .carousel-item, img{
     height: 80vh;
     object-fit: cover;
 }
 .bg-light{
-    background: #C4151C !important;
+    background: #c45900 !important;
 }
 .container{
     margin-top: 10rem;
 }
 
 .bg-header{
-    background: white;
+    background: whitesmoke;
     margin: 0;
 }
 .card{
@@ -24,3 +25,76 @@ body,p {
     object-fit: cover;
     height: 20vw;
 }
+
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5rem;
+    height: 100vh;
+}
+
+.footer {
+    position: fixed;
+    width: 100%;
+    color: white;
+    height: 60px;
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 1rem 0 1rem 0;
+    margin-top: -60px;
+}
+
+.fond-inscription {
+    background: white;
+    padding: 2rem;
+}
+
+.collage-image, img{
+    object-fit: cover;
+}
+
+.collage-image {
+    padding: 0 0 0 20px;
+    margin: 3rem;
+}
+.fl-wrap {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+.collage-image-title {
+    position: absolute;
+    top: 80px;
+    left: -20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    z-index: 3;
+    color: rgba(255, 255, 255, 0.71);
+    font-weight: 500;
+    background: #c45900;
+    padding: 15px 85px 15px 55px;
+    letter-spacing: 15px;
+}
+.collage-image:before {
+    background: #fbd4c3;
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    right: 2rem;
+    bottom: 50px;
+    z-index: 1;
+    width: 2rem;
+}
+.image-conviction{
+    height:20rem;
+    width: auto;
+    box-shadow: 5px 10px 10px #657c95;
+}.nav-link{
+    color: whitesmoke !important;
+ }

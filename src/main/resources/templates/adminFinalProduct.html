@@ -23,7 +23,7 @@
                 <input name="idFp" th:field="*{idFp}" class="form-control" hidden>
                 <div class="col-2">
                     <label>refPf</label>
-                    <input name="refPf" th:field="*{refPf}" class="form-control" readonly>
+                    <input name="refPf" th:field="*{refPf}" class="form-control">
                 </div>
                 <div class="col-2">
                     <label>name</label>
@@ -37,7 +37,36 @@
                     <label>description</label>
                     <textarea name="description" th:field="*{description}" class="form-control"></textarea>
                 </div>
-
+                <div class="col-2">
+                    <label class="smallfont">Creme</label>
+                    <select class="custom-select form-control smallfont" name="halfFinsheds">
+                        <option></option>
+                        <option class="smallfont" th:each="halfFinsheds : ${halfFinshed}"
+                                th:value="${halfFinsheds.getId()}"
+                                th:text="${halfFinsheds.name} + ' '  +${halfFinsheds.prices}">
+                        </option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <label class="smallfont">Creme</label>
+                    <select class="custom-select form-control smallfont" name="halfFinsheds">
+                        <option></option>
+                        <option class="smallfont" th:each="halfFinsheds : ${halfFinshed}"
+                                th:value="${halfFinsheds.getId()}"
+                                th:text="${halfFinsheds.name} + ' '  +${halfFinsheds.prices}">
+                        </option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <label class="smallfont">Creme</label>
+                    <select class="custom-select form-control smallfont" name="halfFinsheds">
+                        <option></option>
+                        <option class="smallfont" th:each="halfFinsheds : ${halfFinshed}"
+                                th:value="${halfFinsheds.getId()}"
+                                th:text="${halfFinsheds.name} + ' '  +${halfFinsheds.prices}">
+                        </option>
+                    </select>
+                </div>
                 <div class="d-flex align-self-end">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enregistrer</button>
                 </div>
