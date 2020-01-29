@@ -1,6 +1,7 @@
 package com.gourmandine.controller;
 
 
+import com.gourmandine.entity.FinalProduct;
 import com.gourmandine.repository.CommandeRepository;
 import com.gourmandine.repository.FinalProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class FinalProduct {
+public class FinalProductController {
     @Autowired
     FinalProductRepository FinalProductRepository;
     @Autowired
@@ -27,7 +28,7 @@ public class FinalProduct {
     @PostMapping("/finalProductSave")
     public String saveFinalproduct(@ModelAttribute FinalProduct finalProduct) {
         try{
-
+            FinalProductRepository.save(finalProduct);
         }catch (Exception ex){
         }
 

@@ -1,0 +1,26 @@
+body,p {
+    margin: 0;
+}
+.carousel-item, img{
+    height: 80vh;
+    object-fit: cover;
+}
+.bg-light{
+    background: #C4151C !important;
+}
+.container{
+    margin-top: 10rem;
+}
+
+.bg-header{
+    background: white;
+    margin: 0;
+}
+.card{
+    width: 20vw;
+    margin: 1rem;
+}
+.card, img{
+    object-fit: cover;
+    height: 20vw;
+}
