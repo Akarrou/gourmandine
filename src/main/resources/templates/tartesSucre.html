@@ -28,7 +28,8 @@
 
     </div>
 </div>
-<form th:action="@{/finalProductSaveClient}" method="post" th:object="${newfinalProduct}">
+
+<form th:action="@{/finalProductSaveClient}" id="test" method="post" th:object="${newfinalProduct}">
     <div class="row">
         <input name="idFp" th:field="*{idFp}" class="form-control" hidden>
         <div class="col-2">
@@ -77,6 +78,12 @@
                 </option>
             </select>
         </div>
+        <div class="col-2">
+            <label class="smallfont">liste</label>
+            <lu  id="liste" name="halfFinsheds">
+
+            </lu>
+        </div>
         <div class="d-flex align-self-end">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enregistrer</button>
         </div>
@@ -92,9 +99,30 @@ function changeValue( id_btn, texte){
     if( oBtn){
         oBtn.value = texte;
     }
+    let ul= document.getElementById("liste");
+    let li = document.createElement("li");
+    li.appendChild(document.createTextNode(texte));
+    li.value =texte;
+    ul.appendChild(li);
+
+    let form = document.getElementById("test");
+    let input = document.createElement("input");
+    input.appendChild(document.createTextNode(texte));
+    input.name="halfFinsheds";
+    input.value =texte;
+    form.appendChild(input);
 }
+    function f() {
+        let form = document.getElementById("test")
+        let input = document.createElement("input")
+        input.appendChild(document.createTextNode(texte));
+        input.name="halfFinsheds";
+        input.value =texte;
+        form.appendChild(input);
+    }
+
 </script>
-<footer th:replace="footer :: footer"></footer>
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
