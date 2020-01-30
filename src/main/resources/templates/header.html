@@ -12,40 +12,35 @@
     <title>Header</title>
 </head>
 <body>
-<header th:fragment="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" th:href="@{/}">API LEKOL</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<header class="fixed-top" th:fragment="header">
+   <div class="text-center bg-header">
+       <h1>MA GOURMANDINE</h1>
+       <p>Choisir sa gourmandise</p>
+   </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" th:unless="${session.userSession == null}">
-                <li class=" mr-4 nav-item ²active">
-                    <a class="nav-link" th:href="@{home}">ACCUEIL<span class="sr-only">(current)</span></a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Acceuil<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{school}">ÉCOLES</a>
+                    <a class="nav-link" th:href="@{/tartesSucre}">Tartes Sucrée</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{classroom}">CLASSES</a>
+                    <a class="nav-link" >Tartes Salée</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{students}">ÉLÈVES</a>
+                    <a class="nav-link" th:href="@{/connexion}">connexion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{users}">UTILISATEURS</a>
+                    <a class="nav-link"  th:href="@{/adminFinalProduct}">Produit fini</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{behavior}">COMPORTEMENTS</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right" th:unless="${session.userSession == null}">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/documentation}">DOCUMENTATION</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/sign-out}">SE DÉCONNECTER</a>
+                    <a class="nav-link"  th:href="@{/inscription}">inscription</a>
                 </li>
             </ul>
         </div>

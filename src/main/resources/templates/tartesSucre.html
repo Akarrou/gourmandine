@@ -1,10 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{style.css}">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Accueil</title>
 </head>
 <body>
-$END$
+<header th:replace="header :: header"></header>
+<div class="container">
+    <h1>Composer Votre Tarte</h1>
+    <div class="d-flex flex-wrap">
+        <div class="col-2 m-5" th:each="halfFinshedFruits : ${halfFinshedFruit}">
+            <div class="collage-image fl-wrap">
+                <div class="collage-image-title" data-scrollax="properties: { translateY: '150px' }"
+                     style="transform: translateZ(0px) translateY(11.0632px);"  th:text="${halfFinshedFruits.name}" >Ananas.
+                </div>
+                <img th:src="${halfFinshedFruits.img}" class="respimg image-conviction" alt="" th:id="${halfFinshedFruits.getId()}" onclick="changeValue('select1',this.id)">
+            </div>
+        </div>
+
+    </div>
+</div>
+<form th:action="@{/finalProductSaveClient}" method="post" th:object="${newfinalProduct}">
+    <div class="row">
+        <input name="idFp" th:field="*{idFp}" class="form-control" hidden>
+        <div class="col-2">
+            <label>refPf</label>
+            <input name="refPf" th:field="*{refPf}" class="form-control">
+        </div>
+        <div class="col-2">
+            <label>name</label>
+            <input name="name" th:field="*{name}" class="form-control">
+        </div>
+        <div class="col-2">
+            <label>prices</label>
+            <input name="prices" th:field="*{prices}" class="form-control">
+        </div>
+        <div class="col-2">
+            <label>description</label>
+            <textarea name="description" th:field="*{description}" class="form-control"></textarea>
+        </div>
+        <div class="col-2">
+            <label class="smallfont">Creme</label>
+            <select class="custom-select form-control smallfont" name="halfFinsheds" id="select1" >
+                <option></option>
+                <option class="smallfont" th:each="halfFinsheds : ${halfFinshed}"
+                        th:value="${halfFinsheds.getId()}"
+                        th:text="${halfFinsheds.name} + ' '  +${halfFinsheds.prices}">
+                </option>
+            </select>
+        </div>
+        <div class="col-2">
+            <label class="smallfont">Creme</label>
+            <select class="custom-select form-control smallfont" name="halfFinsheds">
+                <option></option>
+                <option class="smallfont" th:each="halfFinsheds : ${halfFinshed}"
+                        th:value="${halfFinsheds.getId()}"
+                        th:text="${halfFinsheds.name} + ' '  +${halfFinsheds.prices}">
+                </option>
+            </select>
+        </div>
+        <div class="col-2">
+            <label class="smallfont">Creme</label>
+            <select class="custom-select form-control smallfont" name="halfFinsheds">
+                <option></option>
+                <option class="smallfont" th:each="halfFinsheds : ${halfFinshed}"
+                        th:value="${halfFinsheds.getId()}"
+                        th:text="${halfFinsheds.name} + ' '  +${halfFinsheds.prices}">
+                </option>
+            </select>
+        </div>
+        <div class="d-flex align-self-end">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enregistrer</button>
+        </div>
+    </div>
+</form>
+</div>
+<script>
+function run(id) {
+document.getElementById("select1").value  = document.getElementById(id).innerText;
+}
+function changeValue( id_btn, texte){
+    var oBtn = document.getElementById(id_btn);
+    if( oBtn){
+        oBtn.value = texte;
+    }
+}
+</script>
+<footer th:replace="footer :: footer"></footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 </html>

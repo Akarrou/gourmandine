@@ -9,26 +9,34 @@ public class HalfFinshed {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String refFp;
-    private String refHf;
     private String name;
     private Double prices;
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
-    private User user;
+    private String img;
+    private String type;
 
     @OneToMany(mappedBy = "finalProduct", cascade = CascadeType.REFRESH)
     private List<Commande> commandes = new ArrayList<>();
 
-    public List<Commande> getCommandes() {
-        return commandes;
-    }
-
-    public void setCommandes(List<Commande> commandes) {
-        this.commandes = commandes;
-    }
+    @ManyToMany(mappedBy = "halfFinsheds", cascade = CascadeType.REFRESH)
+    private List<FinalProduct> finalProducts = new ArrayList<>();
 
     public HalfFinshed() {
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public List<FinalProduct> getFinalProducts() {
+        return finalProducts;
+    }
+
+    public void setFinalProducts(List<FinalProduct> finalProducts) {
+        this.finalProducts = finalProducts;
     }
 
     public Long getId() {
@@ -37,22 +45,6 @@ public class HalfFinshed {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getRefFp() {
-        return refFp;
-    }
-
-    public void setRefFp(String refFp) {
-        this.refFp = refFp;
-    }
-
-    public String getRefHf() {
-        return refHf;
-    }
-
-    public void setRefHf(String refHf) {
-        this.refHf = refHf;
     }
 
     public String getName() {
@@ -71,11 +63,20 @@ public class HalfFinshed {
         this.prices = prices;
     }
 
-    public User getUser() {
-        return user;
+    public String getImg() {
+        return img;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 }

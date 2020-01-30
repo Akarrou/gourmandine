@@ -14,6 +14,7 @@ public class User {
     private String firstname;
     private String adress;
     private String role;
+    private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH)
     private List<FinalProduct> finalProducts = new ArrayList<>();
@@ -22,6 +23,14 @@ public class User {
     private List<Commande> commandes = new ArrayList<>();
 
     public User() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getIdUser() {
