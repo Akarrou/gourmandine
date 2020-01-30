@@ -1,27 +1,32 @@
-body,p {
+body, p {
     margin: 0;
     background-color: whitesmoke;
 }
-.carousel-item, img{
+
+.carousel-item, img {
     height: 80vh;
     object-fit: cover;
 }
-.bg-light{
+
+.bg-light {
     background: #c45900 !important;
 }
-.container{
+
+.container {
     margin-top: 10rem;
 }
 
-.bg-header{
+.bg-header {
     background: whitesmoke;
     margin: 0;
 }
-.card{
+
+.card {
     width: 20vw;
     margin: 1rem;
 }
-.card, img{
+
+.card, img {
     object-fit: cover;
     height: 20vw;
 }
@@ -54,7 +59,7 @@ body,p {
     padding: 2rem;
 }
 
-.collage-image, img{
+.collage-image, img {
     object-fit: cover;
 }
 
@@ -62,11 +67,13 @@ body,p {
     padding: 0 0 0 20px;
     margin: 3rem;
 }
+
 .fl-wrap {
     float: left;
     width: 100%;
     position: relative;
 }
+
 .collage-image-title {
     position: absolute;
     top: 80px;
@@ -78,8 +85,9 @@ body,p {
     font-weight: 500;
     background: #c45900;
     padding: 15px 85px 15px 55px;
-    letter-spacing: 15px;
+    letter-spacing: 10px;
 }
+
 .collage-image:before {
     background: #fbd4c3;
     content: '';
@@ -91,10 +99,38 @@ body,p {
     z-index: 1;
     width: 2rem;
 }
-.image-conviction{
-    height:20rem;
+
+.image-conviction {
+    height: 20rem;
     width: auto;
     box-shadow: 5px 10px 10px #657c95;
-}.nav-link{
+
+}
+
+.nav-link {
     color: whitesmoke !important;
- }
+}
+
+.sidenav {
+    width: 20rem;
+    position: fixed;
+    left: 0;
+    padding: 3rem;
+    margin: 1rem;
+    height: 100vh;
+}
+
+.fond-Titre{
+    color: #c45900;
+    font-family: 'Zhi Mang Xing', cursive;
+}
+
+.liste_ma-tarte{
+    background: white;
+    padding: 1rem;
+    height: 20vh;
+}
+
+.liste_ma-tarte,li{
+    list-style: none;
+}

@@ -1,7 +1,10 @@
 package com.gourmandine.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,7 +18,10 @@ public class User {
     private String adress;
     private String role;
     private String password;
-
+    @Column(unique = true)
+    private String session;
+    @JsonIgnore
+    private Date sessionExpiration;
     @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH)
     private List<FinalProduct> finalProducts = new ArrayList<>();
 
@@ -23,6 +29,22 @@ public class User {
     private List<Commande> commandes = new ArrayList<>();
 
     public User() {
+    }
+
+    public String getSession() {
+        return session;
+    }
+
+    public void setSession(String session) {
+        this.session = session;
+    }
+
+    public Date getSessionExpiration() {
+        return sessionExpiration;
+    }
+
+    public void setSessionExpiration(Date sessionExpiration) {
+        this.sessionExpiration = sessionExpiration;
     }
 
     public String getPassword() {

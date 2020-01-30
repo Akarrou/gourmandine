@@ -14,6 +14,7 @@ public class FinalProduct {
     private String name;
     private Double prices;
     private String description;
+    private String status;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     private User user;
@@ -21,6 +22,14 @@ public class FinalProduct {
     @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "recette", joinColumns = @JoinColumn(name = "id_fp"), inverseJoinColumns = @JoinColumn(name = "id"))
     private List<HalfFinshed> halfFinsheds = new ArrayList<>();
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public User getUser() {
         return user;
