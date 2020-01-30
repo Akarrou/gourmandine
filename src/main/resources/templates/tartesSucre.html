@@ -7,6 +7,7 @@
     <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{style.css}">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -35,8 +36,7 @@
                             <input name="name" th:field="*{name}" class="form-control">
                         </div>
                         <div>
-                            <label>prices</label>
-                            <input name="prices" th:field="*{prices}" class="form-control">
+                            <input name="prices" th:field="*{prices}" class="form-control" hidden>
                         </div>
                         <div>
                             <label>description</label>
@@ -79,7 +79,7 @@
                     <div class="collage-image fl-wrap">
                         <div class="collage-image-title" data-scrollax="properties: { translateY: '150px' }"
                              style="transform: translateZ(0px) translateY(11.0632px);"
-                             th:text="${halfFinshedCreme.name}">
+                             th:text="|${halfFinshedCreme.name}   ${halfFinshedCreme.prices} '€'|">
                             Ananas.
                         </div>
                         <img th:src="${halfFinshedCreme.img}" class="respimg image-conviction"
@@ -90,6 +90,7 @@
             </div>
         </div>
     </div>
+    <div class="my-5 pb-5"></div>
 </div>
 
 

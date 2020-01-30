@@ -7,6 +7,7 @@
     <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{style.css}">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -16,16 +17,12 @@
 <body>
 <header th:replace="header :: header"></header>
 <div class="container">
-
-
-    <div>
+    <div class="nouvelleTarte">
+        <h3>Mettre en vente une Nouvelle tarte </h3>
         <form th:action="@{/finalProductSave}" method="post" th:object="${newfinalProduct}">
             <div class="row">
                 <input name="idFp" th:field="*{idFp}" class="form-control" hidden>
-                <div class="col-2">
-                    <label>refPf</label>
-                    <input name="refPf" th:field="*{refPf}" class="form-control">
-                </div>
+                <input name="refPf" th:field="*{refPf}" class="form-control" hidden>
                 <div class="col-2">
                     <label>name</label>
                     <input name="name" th:field="*{name}" class="form-control">
@@ -37,6 +34,10 @@
                 <div class="col-2">
                     <label>description</label>
                     <textarea name="description" th:field="*{description}" class="form-control"></textarea>
+                </div>
+                <div class="col-2">
+                    <label class="smallfont">Photo</label>
+                    <input type="file" name="img"/>
                 </div>
                 <div class="col-2">
                     <label class="smallfont">Creme</label>
@@ -74,6 +75,52 @@
             </div>
         </form>
     </div>
+
+    <div class="container container-fluid">
+        <h2 class="text-center">Commandes de Tartes en cour</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ref</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Composition</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Definir sont Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="finalProducts : ${finalProduct}">
+                <th scope="row">1</th>
+                <td th:text="${finalProducts.refPf}">Mark</td>
+                <td th:text="${finalProducts.getName()}">Otto</td>
+                <td>
+                    <ul>
+                        <li th:each="recette : *{finalProducts.getHalfFinsheds()}">
+                            <p th:text="${recette.getName()}"></p>
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <h4 th:text="${finalProducts.getPrices()}"></h4>
+                </td>
+                <td th:if="${finalProducts.getStatus() == 'commande' || finalProducts.getStatus() =='vente'}">
+                    <form method="post" th:action="@{/tarteProduite}" th:object="${finalProducts}">
+                        <input name="id" th:value="*{idFp}" hidden/>
+                        <input type="submit" class="btn btn-info" value="Fabriquée"/>
+                    </form>
+                </td>
+                <td th:if="${finalProducts.getStatus() == 'fabrique'}">
+                    <form method="post" th:action="@{/tarteLivrer}" th:object="${finalProducts}">
+                        <input name="id" th:value="*{idFp}" hidden/>
+                        <input type="submit" class="btn btn-success" value="livrée"/>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="my-5 pb-5"></div>
 </div>
 <footer th:replace="footer :: footer"></footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

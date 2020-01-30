@@ -54,4 +54,14 @@ public class SingInController {
         response.addCookie(sessionCookie);
         return user;
     }
+
+    @GetMapping("/sign-out")
+    public String getSignOut(HttpSession session, HttpServletResponse response) {
+        session.removeAttribute("userSession");
+        Cookie sessionCookie = new Cookie("sessionId", null);
+        sessionCookie.setPath("/");
+        sessionCookie.setMaxAge(0);
+        response.addCookie(sessionCookie);
+        return "redirect:/";
+    }
 }

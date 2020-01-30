@@ -6,6 +6,7 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"
           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{style.css}">
     <meta name="viewport"
@@ -41,7 +42,29 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
+<dic class="container">
+    <h1 class="text-center">Composez Votre Tarte</h1>
+    <div class="p-5">
+        <hr>
+        <h2>Sélectionnez les fruits de votre tarte </h2>
+    </div>
+    <div class="d-flex flex-wrap">
+        <div class="col-2 m-5" th:each="tartes : ${tarte}">
+            <div class="collage-image fl-wrap">
+                <div class="collage-image-title" data-scrollax="properties: { translateY: '150px' }"
+                     style="transform: translateZ(0px) translateY(11.0632px);"
+                     th:text="|${tartes.name}   ${tartes.prices} '€'|">
+                    Ananas.
+                </div>
+                <img th:src="${tartes.img}" class="respimg image-conviction">
+                <form method="post" th:action="@{/ajoutePanier}" th:object="${tartes}">
+                    <input name="id"  th:value="*{idFp}" hidden/>
+                    <input type="submit" class="btn btn-info" value="Commande"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</dic>
 <footer th:replace="footer :: footer"></footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

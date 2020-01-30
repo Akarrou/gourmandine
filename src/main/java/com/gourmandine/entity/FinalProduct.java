@@ -14,6 +14,7 @@ public class FinalProduct {
     private String name;
     private Double prices;
     private String description;
+    private String img;
     private String status;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
@@ -25,6 +26,14 @@ public class FinalProduct {
 
     public String getStatus() {
         return status;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public void setStatus(String status) {
