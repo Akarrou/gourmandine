@@ -12,19 +12,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Accueil</title>
+    <title>Composez Votre Tarte</title>
 </head>
 <body>
 <header th:replace="header :: header"></header>
 <div class="container">
     <div class="container-fluid my-5 py-5">
-        <div class="row ">
-            <div class="col-sm-2">
+        <div class="row  justify-content-center">
+            <div class="col-sm-2  justify-content-center">
                 <nav class="sidenav ">
+                    <h5 class="m-2 p-2">Ma Fabrique a Tarte</h5>
                     <form th:action="@{/finalProductSaveClient}" id="test" method="post" th:object="${newfinalProduct}">
                         <input name="idFp" th:field="*{idFp}" class="form-control" hidden>
                         <div class="liste_ma-tarte overflow-auto">
-                            <label>Ma Tarte</label>
+                            <label>Composition de ma Tarte</label>
                             <lu id="liste">
                             </lu>
                         </div>
@@ -49,14 +50,15 @@
                 </nav>
             </div>
         </div>
-        <div class="col p-1">
+        <div class="col p-1 justify-content-center">
             <h1 class="text-center">Composez Votre Tarte</h1>
-            <div class="p-5">
-                <hr>
-                <h2>Sélectionnez les fruits de votre tarte </h2>
-            </div>
+        <div class="p-2">
+            <h2>Sélectionnez les fruits de votre tarte </h2>
+        </div>
+    </div>
+        <div class="row p-1 justify-content-center">
             <div class="d-flex flex-wrap">
-                <div class="col-2 m-5" th:each="halfFinshedFruits : ${halfFinshedFruit}">
+                <div class="" th:each="halfFinshedFruits : ${halfFinshedFruit}">
                     <div class="collage-image fl-wrap">
                         <div class="collage-image-title" data-scrollax="properties: { translateY: '150px' }"
                              style="transform: translateZ(0px) translateY(11.0632px);"
@@ -69,13 +71,13 @@
                     </div>
                 </div>
             </div>
-            <div class="p-5">
-                <hr>
-                <h2>Sélectionnez la crème </h2>
+            <div class="col p-1 justify-content-center">
+                <div class="p-2">
+                    <h2>Sélectionnez la crème </h2>
+                </div>
             </div>
             <div class="d-flex flex-wrap">
-
-                <div class="col-2 m-5" th:each="halfFinshedCreme : ${halfFinshedCreme}">
+                <div class="" th:each="halfFinshedCreme : ${halfFinshedCreme}">
                     <div class="collage-image fl-wrap">
                         <div class="collage-image-title" data-scrollax="properties: { translateY: '150px' }"
                              style="transform: translateZ(0px) translateY(11.0632px);"

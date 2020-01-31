@@ -35,7 +35,7 @@ public class FinalProductController {
     }
 
     @PostMapping("/finalProductSave")
-    public String saveFinalproduct(@ModelAttribute FinalProduct finalProduct, @RequestParam(required = false) MultipartFile picture,
+    public String saveFinalproduct(@ModelAttribute FinalProduct finalProduct,
                                    @CookieValue(name = "sessionId", required = false) String sessionId) {
         try{
             Optional<User> user = userRepository.findBySession(sessionId);

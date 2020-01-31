@@ -44,7 +44,6 @@ public class HomeController {
             }
         } catch (Exception ex) {
         }
-
-        return "redirect:tartesSucre";
+        return "redirect:/";
     }
 }

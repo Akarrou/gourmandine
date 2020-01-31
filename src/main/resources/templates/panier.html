@@ -44,8 +44,10 @@
                 <h4 th:text="${paniers.getPrices()}"></h4>
             </td>
             <td>
-                <form method="post" th:action="@{/commandeClient}" th:object="${paniers}">
-                    <input name="id" th:value="*{idFp}" hidden/>
+                <form method="post" th:action="@{/commandeClient}" th:object="${commande}">
+                    <input name="finalProduct" th:value="${paniers.getIdFp()}" hidden/>
+                    <label for=""></label>
+                    <input name="livraison" type="date"/>
                     <input type="submit" class="btn btn-info" value="Commande"/>
                 </form>
             </td>
@@ -94,7 +96,24 @@
             <td>
                 <h4 th:text="${enCommandes.getStatus()}"></h4>
             </td>
-
+        </tr>
+        <tr th:each="enlivraisons : ${enlivraison}">
+            <th scope="row">1</th>
+            <td th:text="${enlivraisons.refPf}">Mark</td>
+            <td th:text="${enlivraisons.getName()}">Otto</td>
+            <td>
+                <ul>
+                    <li th:each="recette : *{enlivraisons.getHalfFinsheds()}">
+                        <p th:text="${recette.getName()}"></p>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <h4 th:text="${enlivraisons.getPrices()}"></h4>
+            </td>
+            <td>
+                <h4>Tarte fabriqué / livraison en cour</h4>
+            </td>
         </tr>
 
         </tbody>

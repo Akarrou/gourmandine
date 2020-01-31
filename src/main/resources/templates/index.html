@@ -24,13 +24,13 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="photo-1476887334197-56adbf254e1a.jpeg" alt="First slide">
+            <img class="d-block w-100" src="TarteCerices.jpeg" alt="First slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="photo-1503485838016-53579610c389.jpeg" alt="Second slide">
+            <img class="d-block w-100" src="tarteFraise.jpeg" alt="Second slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="photo-1519915028121-7d3463d20b13.jpeg" alt="Third slide">
+            <img class="d-block w-100" src="tarteCitron.jpeg" alt="Third slide">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -42,29 +42,32 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-<dic class="container">
-    <h1 class="text-center">Composez Votre Tarte</h1>
-    <div class="p-5">
-        <hr>
-        <h2>Sélectionnez les fruits de votre tarte </h2>
-    </div>
-    <div class="d-flex flex-wrap">
-        <div class="col-2 m-5" th:each="tartes : ${tarte}">
+<div class="container-fluid">
+    <h1 class="text-center">Nos Tartes Les Plus Populaires</h1>
+    <h3 class="text-center">Vos Tartes préférés, livrés chez vous</h3>
+    <p class="text-center">Faites-vous livrer vos tartes préférées dans votre ville, Toulouse</p>
+    <p class="text-center">Inscrivez vous et Faites-vous livrer votre Gourmandine </p>
+    <div class="d-flex flex-wrap justify-content-center">
+        <div class="" th:each="tartes : ${tarte}">
             <div class="collage-image fl-wrap">
                 <div class="collage-image-title" data-scrollax="properties: { translateY: '150px' }"
                      style="transform: translateZ(0px) translateY(11.0632px);"
-                     th:text="|${tartes.name}   ${tartes.prices} '€'|">
+                     th:text="|${tartes.name}   ${tartes.prices} €|">
                     Ananas.
                 </div>
                 <img th:src="${tartes.img}" class="respimg image-conviction">
+                <div class="m-3 p-1">
+                    <p th:text="${tartes.description}"></p>
+                </div>
                 <form method="post" th:action="@{/ajoutePanier}" th:object="${tartes}">
-                    <input name="id"  th:value="*{idFp}" hidden/>
-                    <input type="submit" class="btn btn-info" value="Commande"/>
+                    <input name="id" th:value="*{idFp}" hidden/>
+                    <input type="submit" class="btn btn-info" value="Ajouté a mon Panier"/>
                 </form>
             </div>
         </div>
     </div>
-</dic>
+    <div class="my-5 pb-5"></div>
+</div>
 <footer th:replace="footer :: footer"></footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

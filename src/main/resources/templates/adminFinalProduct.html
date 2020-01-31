@@ -104,6 +104,13 @@
                 <td>
                     <h4 th:text="${finalProducts.getPrices()}"></h4>
                 </td>
+                <td>
+                    <ul>
+                        <li th:each="commande : *{finalProducts.getUser().getCommandes()}">
+                            <p th:text="${commande.getLivraison()}"></p>
+                        </li>
+                    </ul>
+                </td>
                 <td th:if="${finalProducts.getStatus() == 'commande' || finalProducts.getStatus() =='vente'}">
                     <form method="post" th:action="@{/tarteProduite}" th:object="${finalProducts}">
                         <input name="id" th:value="*{idFp}" hidden/>

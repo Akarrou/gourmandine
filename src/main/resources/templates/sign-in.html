@@ -17,32 +17,30 @@
 </head>
 <body class="bglogin">
 <header th:replace="header :: header"></header>
-<div class="container container-table">
-    <div class="row h-100 justify-content-center">
-        <div class="card">
-            <div class="card-body">
-                <div class="text-center">
-                    <h1 class="schoolfont">MA GOURMANDINE</h1>
+<div class="container d-flex flex-wrap justify-content-center">
+    <div class="card p-4" style="width: 25rem;">
+        <div class="card-body">
+            <h5 class="card-title fond-Titre text-center">MA GOURMANDINE</h5>
+            <h6 class="card-title text-center">Connexion</h6>
+            <form th:action="@{/sign-in}" method="post" th:object="${user}">
+                <div class="form-group">
+                    <label for="email">Adresse email :</label>
+                    <input type="email" th:field="*{email}" class="form-control" placeholder="Email"
+                           id="email">
                 </div>
-                <form th:action="@{/sign-in}" method="post" th:object="${user}">
-                    <div class="form-group">
-                        <label for="email">Adresse email :</label>
-                        <input type="email" th:field="*{email}" class="form-control" placeholder="Email"
-                               id="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd">Mot de passe :</label>
-                        <input type="password" th:field="*{password}" class="form-control" placeholder="Mot de passe"
-                               id="pwd">
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary mb-4">SE CONNECTER</button>
-                    </div>
-                </form>
-            </div>
+                <div class="form-group">
+                    <label for="pwd">Mot de passe :</label>
+                    <input type="password" th:field="*{password}" class="form-control" placeholder="Mot de passe"
+                           id="pwd">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mb-4">SE CONNECTER</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
 
 <footer th:replace="footer :: footer"></footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
