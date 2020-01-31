@@ -1,0 +1,165 @@
+body, p {
+    margin: 0;
+    background-color: whitesmoke;
+    font-family: 'Playfair Display', serif;
+}
+
+
+.bg-light {
+    background: #c45900 !important;
+}
+
+.container {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+
+
+.bg-header {
+    background: whitesmoke;
+    margin: 0;
+}
+.bg-header,p{
+    margin: 0;
+    padding: 0.1rem;
+    font-size: 14px;
+}
+
+.card {
+    width: 20vw;
+    margin: 1rem;
+}
+
+.card, img {
+    object-fit: cover;
+    height: 20vw;
+}
+
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5rem;
+    height: 100vh;
+}
+
+.footer {
+    position: fixed;
+    width: 100%;
+    color: white;
+    height: 60px;
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 1rem 0 1rem 0;
+    margin-top: -60px;
+}
+
+.fond-inscription {
+    background: white;
+    padding: 2rem;
+    width: 25vw;
+}
+
+.collage-image, img {
+    object-fit: cover;
+}
+
+.collage-image {
+    padding: 0 0 0 20px;
+    margin: 3rem;
+}
+
+.fl-wrap {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.collage-image-title {
+    position: absolute;
+    top: 80px;
+    left: -20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    z-index: 3;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    background: #c45900;
+    width: 20rem;
+    padding: 10px 18px;
+}
+
+.collage-image:before {
+    background: #fbd4c3;
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    right: 2rem;
+    bottom: 50px;
+    z-index: 1;
+    width: 2rem;
+}
+
+.image-conviction {
+    height: 20rem;
+    width: 20rem;
+    object-fit: cover;
+    box-shadow: 5px 10px 10px #657c95;
+
+}
+
+.nav-link {
+    color: whitesmoke !important;
+    font-size: 20px !important;
+}
+
+.sidenav {
+    width: 20rem;
+    position: fixed;
+    left: 0;
+    padding: 3rem;
+    margin: 1rem;
+    height: 100vh;
+}
+
+.fond-Titre{
+    color: #c45900;
+    font-family: 'Zhi Mang Xing', cursive;
+}
+
+.liste_ma-tarte{
+    background: white;
+    padding: 1rem;
+    height: 20vh;
+}
+
+.liste_ma-tarte,li{
+    list-style: none;
+}
+.nouvelleTarte{
+    background: white;
+    padding: 2rem;
+ }
+
+@media screen and (min-width: 200px) and (max-width: 640px) {
+    .card {
+        height: 50vh !important;
+    }
+    .sidenav {
+        width: 20rem;
+        position: inherit;
+        left: initial;
+        padding: 3rem;
+        margin: 1rem;
+        height: initial;
+    }
+
+    .fond-inscription {
+        width: 100vw;
+    }
+}
