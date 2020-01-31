@@ -1,12 +1,9 @@
 body, p {
     margin: 0;
     background-color: whitesmoke;
+    font-family: 'Playfair Display', serif;
 }
 
-.carousel-item, img {
-    height: 80vh;
-    object-fit: cover;
-}
 
 .bg-light {
     background: #c45900 !important;
@@ -14,11 +11,18 @@ body, p {
 
 .container {
     margin-top: 10rem;
+    margin-bottom: 10rem;
 }
+
 
 .bg-header {
     background: whitesmoke;
     margin: 0;
+}
+.bg-header,p{
+    margin: 0;
+    padding: 0.1rem;
+    font-size: 14px;
 }
 
 .card {
@@ -57,6 +61,7 @@ body, p {
 .fond-inscription {
     background: white;
     padding: 2rem;
+    width: 25vw;
 }
 
 .collage-image, img {
@@ -78,14 +83,14 @@ body, p {
     position: absolute;
     top: 80px;
     left: -20px;
-    font-size: 12px;
+    font-size: 18px;
     text-transform: uppercase;
     z-index: 3;
-    color: rgba(255, 255, 255, 0.71);
+    color: rgb(255, 255, 255);
     font-weight: 500;
     background: #c45900;
-    padding: 15px 85px 15px 55px;
-    letter-spacing: 10px;
+    width: 20rem;
+    padding: 10px 18px;
 }
 
 .collage-image:before {
@@ -102,13 +107,15 @@ body, p {
 
 .image-conviction {
     height: 20rem;
-    width: auto;
+    width: 20rem;
+    object-fit: cover;
     box-shadow: 5px 10px 10px #657c95;
 
 }
 
 .nav-link {
     color: whitesmoke !important;
+    font-size: 20px !important;
 }
 
 .sidenav {
@@ -133,4 +140,26 @@ body, p {
 
 .liste_ma-tarte,li{
     list-style: none;
+}
+.nouvelleTarte{
+    background: white;
+    padding: 2rem;
+ }
+
+@media screen and (min-width: 200px) and (max-width: 640px) {
+    .card {
+        height: 50vh !important;
+    }
+    .sidenav {
+        width: 20rem;
+        position: inherit;
+        left: initial;
+        padding: 3rem;
+        margin: 1rem;
+        height: initial;
+    }
+
+    .fond-inscription {
+        width: 100vw;
+    }
 }

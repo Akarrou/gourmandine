@@ -12,5 +12,6 @@ import java.util.List;
 public interface FinalProductRepository extends JpaRepository<FinalProduct, Long> {
 
     List<FinalProduct> findAllByUserAndStatus(User user, String status);
+    List<FinalProduct> findAllByStatus(String status);
 
 }

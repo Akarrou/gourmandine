@@ -1,10 +1,17 @@
 package com.gourmandine.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "index")
 public class FinalProduct {
 
     @Id
@@ -14,17 +21,28 @@ public class FinalProduct {
     private String name;
     private Double prices;
     private String description;
+    private String img;
     private String status;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     private User user;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "recette", joinColumns = @JoinColumn(name = "id_fp"), inverseJoinColumns = @JoinColumn(name = "id"))
     private List<HalfFinshed> halfFinsheds = new ArrayList<>();
 
     public String getStatus() {
         return status;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public void setStatus(String status) {

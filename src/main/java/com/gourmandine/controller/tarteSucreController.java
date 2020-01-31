@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -56,22 +54,4 @@ public class tarteSucreController {
         }
         return "redirect:tartesSucre";
     }
-
-    @PostMapping("/commandeClient")
-    public String commande(@RequestParam Long id, @CookieValue(name = "sessionId", required = false) String sessionId) {
-        try {
-            Optional<User> user = userRepository.findBySession(sessionId);
-            if (user.isPresent()) {
-                Optional<FinalProduct> finalProduct = finalProductRepository.findById(id);
-                if (finalProduct.isPresent()) {
-                    finalProduct.get().setStatus("commande");
-                    finalProductRepository.save(finalProduct.get());
-                }
-            }
-        } catch (Exception ex) {
-        }
-
-        return "redirect:tartesSucre";
-    }
-
 }

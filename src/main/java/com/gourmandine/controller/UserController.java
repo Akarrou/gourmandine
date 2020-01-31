@@ -20,6 +20,7 @@ public class UserController {
 
     @PostMapping("/usersave")
     public String userSave(@ModelAttribute User user) {
+        user.setRole("client");
             userRepository.save(user);
         return "redirect:/connexion";
     }

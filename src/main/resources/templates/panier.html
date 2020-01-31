@@ -7,6 +7,7 @@
     <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{style.css}">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -15,8 +16,8 @@
 </head>
 <body>
 <header th:replace="header :: header"></header>
-<div class="container-fluid">
-    <h2 class="text-center">Mes tartes</h2>
+<div class="container container-fluid">
+    <h2 class="text-center">Ma Fabrique a Tarte</h2>
     <table class="table">
         <thead>
         <tr>
@@ -24,6 +25,7 @@
             <th scope="col">Ref</th>
             <th scope="col">Nom</th>
             <th scope="col">Composition</th>
+            <th scope="col">Prix</th>
         </tr>
         </thead>
         <tbody>
@@ -38,10 +40,22 @@
                     </li>
                 </ul>
             </td>
-            <td> <form method="post" th:action="@{/commandeClient}" th:object="${paniers}">
-                <input name="id"  th:value="*{idFp}" hidden/>
-                <input type="submit" class="btn btn-info" value="Commande"/>
-            </form>
+            <td>
+                <h4 th:text="${paniers.getPrices()}"></h4>
+            </td>
+            <td>
+                <form method="post" th:action="@{/commandeClient}" th:object="${commande}">
+                    <input name="finalProduct" th:value="${paniers.getIdFp()}" hidden/>
+                    <label for=""></label>
+                    <input name="livraison" type="date"/>
+                    <input type="submit" class="btn btn-info" value="Commande"/>
+                </form>
+            </td>
+            <td>
+                <form method="post" th:action="@{/deleteCommandeClient}" th:object="${paniers}">
+                    <input name="id" th:value="*{idFp}" hidden/>
+                    <input type="submit" class="btn btn-danger" value="Supprimer"/>
+                </form>
             </td>
 
         </tr>
@@ -51,7 +65,61 @@
 
 </div>
 
+<div class="container container-fluid">
+    <h2 class="text-center">Mes Tartes commandée</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ref</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Composition</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="enCommandes : ${enCommande}">
+            <th scope="row">1</th>
+            <td th:text="${enCommandes.refPf}">Mark</td>
+            <td th:text="${enCommandes.getName()}">Otto</td>
+            <td>
+                <ul>
+                    <li th:each="recette : *{enCommandes.getHalfFinsheds()}">
+                        <p th:text="${recette.getName()}"></p>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <h4 th:text="${enCommandes.getPrices()}"></h4>
+            </td>
+            <td>
+                <h4 th:text="${enCommandes.getStatus()}"></h4>
+            </td>
+        </tr>
+        <tr th:each="enlivraisons : ${enlivraison}">
+            <th scope="row">1</th>
+            <td th:text="${enlivraisons.refPf}">Mark</td>
+            <td th:text="${enlivraisons.getName()}">Otto</td>
+            <td>
+                <ul>
+                    <li th:each="recette : *{enlivraisons.getHalfFinsheds()}">
+                        <p th:text="${recette.getName()}"></p>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <h4 th:text="${enlivraisons.getPrices()}"></h4>
+            </td>
+            <td>
+                <h4>Tarte fabriqué / livraison en cour</h4>
+            </td>
+        </tr>
 
+        </tbody>
+    </table>
+
+</div>
 <footer th:replace="footer :: footer"></footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
